@@ -107,6 +107,19 @@
       .week-accordion-body { display: none; padding: 10px 12px 12px; }
       .week-accordion-body[data-open="true"] { display: block; }
 
+      /* ── 체크박스 스타일 ── */
+      .schedule-item input[type="checkbox"] {
+        width: 15px; height: 15px; border-radius: 4px;
+        accent-color: #2563eb; flex-shrink: 0; margin-top: 3px; cursor: pointer;
+      }
+      .schedule-item:has(input[type="checkbox"]:checked) {
+        background: #eff6ff; border-color: #2563eb;
+        box-shadow: 0 4px 12px rgba(37,99,235,0.15);
+      }
+      .schedule-item.weekend:has(input[type="checkbox"]:checked) {
+        background: #fff7ed; border-color: #f97316;
+      }
+
       /* ── 마감 항목 스타일 ── */
       .schedule-item:has(input:disabled) {
         opacity: 0.38 !important;
@@ -255,7 +268,7 @@
               </div>
               <div class="field">
                 <p class="label-main">3–4월 셔틀 스케쥴에서 선택<span class="required">*</span></p>
-                <p class="label-sub">이용하실 날짜와 장소를 선택해 주세요. <span style="color:#c2410c;font-weight:600;">주황색</span>은 주말 일정입니다.</p>
+                <p class="label-sub">이용하실 날짜와 장소를 <strong>복수 선택</strong>할 수 있습니다. <span style="color:#c2410c;font-weight:600;">주황색</span>은 주말 일정입니다.</p>
                 <div class="month-toggle">
                   <button type="button" data-month="3" data-active="true">3월</button>
                   <button type="button" data-month="4" data-active="false">4월</button>
@@ -273,16 +286,16 @@
                       </button>
                       <div class="week-accordion-body" data-open="true">
                         <div class="schedule-grid">
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-1-safari" required /><div class="schedule-label"><span class="schedule-main">3/1 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-1-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/1 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-3-hmart" /><div class="schedule-label"><span class="schedule-main">3/3 (화) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-4-hmart" /><div class="schedule-label"><span class="schedule-main">3/4 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-5-shrine" /><div class="schedule-label"><span class="schedule-main">3/5 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-6-hmart" /><div class="schedule-label"><span class="schedule-main">3/6 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-7-safari" /><div class="schedule-label"><span class="schedule-main">3/7 (토) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-7-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/7 (토) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-8-anjo" /><div class="schedule-label"><span class="schedule-main">3/8 (일) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-8-lantaw" /><div class="schedule-label"><span class="schedule-main">3/8 (일) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-1-safari" /><div class="schedule-label"><span class="schedule-main">3/1 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-1-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/1 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-3-hmart" /><div class="schedule-label"><span class="schedule-main">3/3 (화) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-4-hmart" /><div class="schedule-label"><span class="schedule-main">3/4 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-5-shrine" /><div class="schedule-label"><span class="schedule-main">3/5 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-6-hmart" /><div class="schedule-label"><span class="schedule-main">3/6 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-7-safari" /><div class="schedule-label"><span class="schedule-main">3/7 (토) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-7-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/7 (토) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-8-anjo" /><div class="schedule-label"><span class="schedule-main">3/8 (일) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-8-lantaw" /><div class="schedule-label"><span class="schedule-main">3/8 (일) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -295,14 +308,14 @@
                       </button>
                       <div class="week-accordion-body" data-open="false">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-10-parola" /><div class="schedule-label"><span class="schedule-main">3/10 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 다른 하우스 일정과 함께</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-11-hmart" /><div class="schedule-label"><span class="schedule-main">3/11 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-12-shrine" /><div class="schedule-label"><span class="schedule-main">3/12 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-13-hmart" /><div class="schedule-label"><span class="schedule-main">3/13 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-14-anjo" /><div class="schedule-label"><span class="schedule-main">3/14 (토) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-14-lantaw" /><div class="schedule-label"><span class="schedule-main">3/14 (토) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-15-safari" /><div class="schedule-label"><span class="schedule-main">3/15 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-15-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/15 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-10-parola" /><div class="schedule-label"><span class="schedule-main">3/10 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 다른 하우스 일정과 함께</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-11-hmart" /><div class="schedule-label"><span class="schedule-main">3/11 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-12-shrine" /><div class="schedule-label"><span class="schedule-main">3/12 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-13-hmart" /><div class="schedule-label"><span class="schedule-main">3/13 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-14-anjo" /><div class="schedule-label"><span class="schedule-main">3/14 (토) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-14-lantaw" /><div class="schedule-label"><span class="schedule-main">3/14 (토) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-15-safari" /><div class="schedule-label"><span class="schedule-main">3/15 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-15-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/15 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -315,14 +328,14 @@
                       </button>
                       <div class="week-accordion-body" data-open="false">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-17-parola" /><div class="schedule-label"><span class="schedule-main">3/17 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 다른 하우스 일정과 함께</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-18-hmart" /><div class="schedule-label"><span class="schedule-main">3/18 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-19-shrine" /><div class="schedule-label"><span class="schedule-main">3/19 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-20-hmart" /><div class="schedule-label"><span class="schedule-main">3/20 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-21-safari" /><div class="schedule-label"><span class="schedule-main">3/21 (토) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-21-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/21 (토) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-22-anjo" /><div class="schedule-label"><span class="schedule-main">3/22 (일) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-22-lantaw" /><div class="schedule-label"><span class="schedule-main">3/22 (일) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-17-parola" /><div class="schedule-label"><span class="schedule-main">3/17 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 다른 하우스 일정과 함께</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-18-hmart" /><div class="schedule-label"><span class="schedule-main">3/18 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-19-shrine" /><div class="schedule-label"><span class="schedule-main">3/19 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-20-hmart" /><div class="schedule-label"><span class="schedule-main">3/20 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-21-safari" /><div class="schedule-label"><span class="schedule-main">3/21 (토) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-21-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/21 (토) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-22-anjo" /><div class="schedule-label"><span class="schedule-main">3/22 (일) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-22-lantaw" /><div class="schedule-label"><span class="schedule-main">3/22 (일) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -335,15 +348,15 @@
                       </button>
                       <div class="week-accordion-body" data-open="false">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-24-parola" /><div class="schedule-label"><span class="schedule-main">3/24 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 다른 하우스 일정과 함께</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-25-hmart" /><div class="schedule-label"><span class="schedule-main">3/25 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-26-smseaside" /><div class="schedule-label"><span class="schedule-main">3/26 (목) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-27-hmart" /><div class="schedule-label"><span class="schedule-main">3/27 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-28-anjo" /><div class="schedule-label"><span class="schedule-main">3/28 (토) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-28-lantaw" /><div class="schedule-label"><span class="schedule-main">3/28 (토) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-29-safari" /><div class="schedule-label"><span class="schedule-main">3/29 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="3-29-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/29 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-30-hmart" /><div class="schedule-label"><span class="schedule-main">3/30 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-24-parola" /><div class="schedule-label"><span class="schedule-main">3/24 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 다른 하우스 일정과 함께</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-25-hmart" /><div class="schedule-label"><span class="schedule-main">3/25 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-26-smseaside" /><div class="schedule-label"><span class="schedule-main">3/26 (목) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-27-hmart" /><div class="schedule-label"><span class="schedule-main">3/27 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-28-anjo" /><div class="schedule-label"><span class="schedule-main">3/28 (토) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-28-lantaw" /><div class="schedule-label"><span class="schedule-main">3/28 (토) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-29-safari" /><div class="schedule-label"><span class="schedule-main">3/29 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="3-29-ilcorso" /><div class="schedule-label"><span class="schedule-main">3/29 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-30-hmart" /><div class="schedule-label"><span class="schedule-main">3/30 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -356,7 +369,7 @@
                       </button>
                       <div class="week-accordion-body" data-open="false">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="3-31-smseaside" /><div class="schedule-label"><span class="schedule-main">3/31 (화) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="3-31-smseaside" /><div class="schedule-label"><span class="schedule-main">3/31 (화) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -374,14 +387,14 @@
                       </button>
                       <div class="week-accordion-body" data-open="true">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-1-hmart" /><div class="schedule-label"><span class="schedule-main">4/1 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-2-shrine" /><div class="schedule-label"><span class="schedule-main">4/2 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-3-hmart" /><div class="schedule-label"><span class="schedule-main">4/3 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-4-safari" /><div class="schedule-label"><span class="schedule-main">4/4 (토) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-4-ilcorso" /><div class="schedule-label"><span class="schedule-main">4/4 (토) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-5-anjo" /><div class="schedule-label"><span class="schedule-main">4/5 (일) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-5-lantaw" /><div class="schedule-label"><span class="schedule-main">4/5 (일) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-6-hmart" /><div class="schedule-label"><span class="schedule-main">4/6 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-1-hmart" /><div class="schedule-label"><span class="schedule-main">4/1 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-2-shrine" /><div class="schedule-label"><span class="schedule-main">4/2 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-3-hmart" /><div class="schedule-label"><span class="schedule-main">4/3 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-4-safari" /><div class="schedule-label"><span class="schedule-main">4/4 (토) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-4-ilcorso" /><div class="schedule-label"><span class="schedule-main">4/4 (토) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-5-anjo" /><div class="schedule-label"><span class="schedule-main">4/5 (일) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-5-lantaw" /><div class="schedule-label"><span class="schedule-main">4/5 (일) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-6-hmart" /><div class="schedule-label"><span class="schedule-main">4/6 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -394,15 +407,15 @@
                       </button>
                       <div class="week-accordion-body" data-open="false">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-7-parola" /><div class="schedule-label"><span class="schedule-main">4/7 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 식사 후 함께 이동</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-8-hmart" /><div class="schedule-label"><span class="schedule-main">4/8 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-9-smseaside" /><div class="schedule-label"><span class="schedule-main">4/9 (목) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-10-hmart" /><div class="schedule-label"><span class="schedule-main">4/10 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-11-anjo" /><div class="schedule-label"><span class="schedule-main">4/11 (토) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-11-lantaw" /><div class="schedule-label"><span class="schedule-main">4/11 (토) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-12-safari" /><div class="schedule-label"><span class="schedule-main">4/12 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-12-ilcorso" /><div class="schedule-label"><span class="schedule-main">4/12 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-13-hmart" /><div class="schedule-label"><span class="schedule-main">4/13 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-7-parola" /><div class="schedule-label"><span class="schedule-main">4/7 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 식사 후 함께 이동</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-8-hmart" /><div class="schedule-label"><span class="schedule-main">4/8 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-9-smseaside" /><div class="schedule-label"><span class="schedule-main">4/9 (목) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-10-hmart" /><div class="schedule-label"><span class="schedule-main">4/10 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-11-anjo" /><div class="schedule-label"><span class="schedule-main">4/11 (토) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-11-lantaw" /><div class="schedule-label"><span class="schedule-main">4/11 (토) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-12-safari" /><div class="schedule-label"><span class="schedule-main">4/12 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-12-ilcorso" /><div class="schedule-label"><span class="schedule-main">4/12 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-13-hmart" /><div class="schedule-label"><span class="schedule-main">4/13 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -415,15 +428,15 @@
                       </button>
                       <div class="week-accordion-body" data-open="false">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-14-smseaside" /><div class="schedule-label"><span class="schedule-main">4/14 (화) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-15-hmart" /><div class="schedule-label"><span class="schedule-main">4/15 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-16-shrine" /><div class="schedule-label"><span class="schedule-main">4/16 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-17-hmart" /><div class="schedule-label"><span class="schedule-main">4/17 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-18-safari" /><div class="schedule-label"><span class="schedule-main">4/18 (토) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-18-ilcorso" /><div class="schedule-label"><span class="schedule-main">4/18 (토) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-19-anjo" /><div class="schedule-label"><span class="schedule-main">4/19 (일) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-19-lantaw" /><div class="schedule-label"><span class="schedule-main">4/19 (일) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-20-hmart" /><div class="schedule-label"><span class="schedule-main">4/20 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-14-smseaside" /><div class="schedule-label"><span class="schedule-main">4/14 (화) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-15-hmart" /><div class="schedule-label"><span class="schedule-main">4/15 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-16-shrine" /><div class="schedule-label"><span class="schedule-main">4/16 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-17-hmart" /><div class="schedule-label"><span class="schedule-main">4/17 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-18-safari" /><div class="schedule-label"><span class="schedule-main">4/18 (토) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-18-ilcorso" /><div class="schedule-label"><span class="schedule-main">4/18 (토) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-19-anjo" /><div class="schedule-label"><span class="schedule-main">4/19 (일) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-19-lantaw" /><div class="schedule-label"><span class="schedule-main">4/19 (일) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-20-hmart" /><div class="schedule-label"><span class="schedule-main">4/20 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -436,15 +449,15 @@
                       </button>
                       <div class="week-accordion-body" data-open="false">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-21-parola" /><div class="schedule-label"><span class="schedule-main">4/21 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 식사 후 함께 이동</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-22-hmart" /><div class="schedule-label"><span class="schedule-main">4/22 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-23-smseaside" /><div class="schedule-label"><span class="schedule-main">4/23 (목) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-24-hmart" /><div class="schedule-label"><span class="schedule-main">4/24 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-25-anjo" /><div class="schedule-label"><span class="schedule-main">4/25 (토) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-25-lantaw" /><div class="schedule-label"><span class="schedule-main">4/25 (토) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-26-safari" /><div class="schedule-label"><span class="schedule-main">4/26 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
-                          <label class="schedule-item weekend"><input type="radio" name="schedule" value="4-26-ilcorso" /><div class="schedule-label"><span class="schedule-main">4/26 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-27-hmart" /><div class="schedule-label"><span class="schedule-main">4/27 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-21-parola" /><div class="schedule-label"><span class="schedule-main">4/21 (화) · Parola 레스토랑</span><span class="schedule-sub">4:40pm 출발 · 식사 후 함께 이동</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-22-hmart" /><div class="schedule-label"><span class="schedule-main">4/22 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-23-smseaside" /><div class="schedule-label"><span class="schedule-main">4/23 (목) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-24-hmart" /><div class="schedule-label"><span class="schedule-main">4/24 (금) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-25-anjo" /><div class="schedule-label"><span class="schedule-main">4/25 (토) · 안조월드</span><span class="schedule-sub">1:00pm 출발</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-25-lantaw" /><div class="schedule-label"><span class="schedule-main">4/25 (토) · 코르도바 란타우</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-26-safari" /><div class="schedule-label"><span class="schedule-main">4/26 (일) · 세부 사파리</span><span class="schedule-sub">8:30am 출발 · 인당 200페소</span></div></label>
+                          <label class="schedule-item weekend"><input type="checkbox" name="schedule" value="4-26-ilcorso" /><div class="schedule-label"><span class="schedule-main">4/26 (일) · 일콜소 (IL CORSO)</span><span class="schedule-sub">4:00pm 출발 · 2시간 30분 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-27-hmart" /><div class="schedule-label"><span class="schedule-main">4/27 (월) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -457,9 +470,9 @@
                       </button>
                       <div class="week-accordion-body" data-open="false">
                         <div class="schedule-grid">
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-28-smseaside" /><div class="schedule-label"><span class="schedule-main">4/28 (화) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-29-hmart" /><div class="schedule-label"><span class="schedule-main">4/29 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
-                          <label class="schedule-item"><input type="radio" name="schedule" value="4-30-shrine" /><div class="schedule-label"><span class="schedule-main">4/30 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-28-smseaside" /><div class="schedule-label"><span class="schedule-main">4/28 (화) · SM Seaside</span><span class="schedule-sub">10:00 출발 (가는 셔틀만, 복귀 없음)</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-29-hmart" /><div class="schedule-label"><span class="schedule-main">4/29 (수) · H-Mart</span><span class="schedule-sub">10:00 출발 · 11:00 H마트 → 드림하우스</span></div></label>
+                          <label class="schedule-item"><input type="checkbox" name="schedule" value="4-30-shrine" /><div class="schedule-label"><span class="schedule-main">4/30 (목) · 막탄 쉬라인</span><span class="schedule-sub">5:30pm 출발 · 방문 후 복귀</span></div></label>
                         </div>
                       </div>
                     </div>
@@ -476,8 +489,8 @@
                   <input id="people" name="people" type="number" min="1" required placeholder="예) 2" />
                 </div>
                 <div class="field">
-                  <label class="label-main" for="room">방 번호 (선택)</label>
-                  <input id="room" name="room" type="text" placeholder="예) 드림하우스 203호" />
+                  <label class="label-main" for="room">방 번호<span class="required">*</span></label>
+                  <input id="room" name="room" type="text" required placeholder="예) 드하 5호 / C755 / 입실전" />
                 </div>
               </div>
 
@@ -658,7 +671,7 @@
           });
         }
 
-        const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwqK13BTYKhX4HqJHxJCotHP2X2lbtdRptQkW-j9A6-ZffkRtt1B8v1IKwIZ6uMBM4/exec";
+        const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzC8a99RDL_Q93RKslS0O4tHLePJHDIf40flXH8qY3ngVPxF6dO5K8qLphyoXldm5ue/exec";
         const form = document.getElementById("shuttle-form");
         const submitButton = document.getElementById("submit-button");
 
@@ -666,11 +679,23 @@
           form.addEventListener("submit", async (e) => {
             e.preventDefault();
             if (!form.reportValidity()) return;
+            // 체크박스 최소 1개 선택 확인
+            const checked = form.querySelectorAll('input[name="schedule"]:checked');
+            if (checked.length === 0) {
+              alert("날짜를 최소 1개 이상 선택해 주세요.");
+              return;
+            }
+
             submitButton.disabled = true;
             const orig = submitButton.textContent;
             submitButton.textContent = "전송 중...";
             try {
-              const res = await fetch(FORM_ENDPOINT, { method: "POST", body: new FormData(form) });
+              const formData = new FormData(form);
+              // 체크박스 다중값 처리
+              formData.delete("schedule");
+              const scheduleValues = Array.from(checked).map(cb => cb.value).join(", ");
+              formData.append("schedule", scheduleValues);
+              const res = await fetch(FORM_ENDPOINT, { method: "POST", body: formData });
               if (!res.ok) throw new Error("Network error");
               alert("신청이 완료되었습니다! 드림센터를 통해 확인 안내를 드릴 예정입니다.");
               form.reset();
