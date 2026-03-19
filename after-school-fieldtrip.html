@@ -114,9 +114,22 @@
         background: #fff7ed; border-color: #f97316;
       }
 
+      /* ── 체크박스 스타일 ── */
+      .schedule-item input[type="checkbox"] {
+        width: 15px; height: 15px; border-radius: 4px;
+        accent-color: #16a34a; flex-shrink: 0; margin-top: 3px; cursor: pointer;
+      }
+      .schedule-item:has(input[type="checkbox"]:checked) {
+        background: #f0fdf4 !important; border-color: #16a34a !important;
+        box-shadow: 0 4px 12px rgba(22,163,74,0.15);
+      }
+      .schedule-item.fieldtrip:has(input[type="checkbox"]:checked) {
+        background: #fff7ed !important; border-color: #f97316 !important;
+      }
+
       /* 마감 스타일 */
-      .schedule-item:has(input:disabled) { opacity: 0.38 !important; cursor: not-allowed !important; transform: none !important; pointer-events: none; }
-      .schedule-item:has(input:disabled) .schedule-main::after { content: " · 마감"; font-size: 10px; font-weight: 600; color: #9ca3af; background: #f3f4f6; padding: 1px 5px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
+      .schedule-item:has(input[type="checkbox"]:disabled) { opacity: 0.38 !important; cursor: not-allowed !important; transform: none !important; pointer-events: none; }
+      .schedule-item:has(input[type="checkbox"]:disabled) .schedule-main::after { content: " · 마감"; font-size: 10px; font-weight: 600; color: #9ca3af; background: #f3f4f6; padding: 1px 5px; border-radius: 4px; margin-left: 4px; vertical-align: middle; }
 
       .submit-row { margin-top: 4px; display: flex; justify-content: flex-end; gap: 8px; }
       .btn { border: none; border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 6px; transition: background 140ms, transform 140ms, box-shadow 140ms, opacity 120ms; }
@@ -611,35 +624,31 @@
         function disableExpiredSchedules() {
           const pht = getPHTNow();
           document.querySelectorAll(".schedule-item").forEach((item) => {
-            const radio = item.querySelector("input[type=radio]");
-            if (!radio) return;
-            const parts = radio.value.split("-");
+            const cb = item.querySelector("input[type=checkbox]");
+            if (!cb) return;
+            const parts = cb.value.split("-");
             if (parts.length < 2) return;
             const month = parseInt(parts[0], 10);
             const day = parseInt(parts[1], 10);
             const scheduleDate = new Date(pht.getFullYear(), month - 1, day);
             const scheduleDow = scheduleDate.getDay();
-
             let deadline;
             if (scheduleDow === 1) {
-              // 월요일 → 금요일 16:50 마감
               deadline = new Date(scheduleDate);
               deadline.setDate(deadline.getDate() - 3);
               deadline.setHours(16, 50, 0, 0);
             } else {
-              // 그 외 → 전날 16:50 마감
               deadline = new Date(scheduleDate);
               deadline.setDate(deadline.getDate() - 1);
               deadline.setHours(16, 50, 0, 0);
             }
-
             if (pht >= deadline) {
-              radio.disabled = true;
+              cb.disabled = true;
               item.style.opacity = "0.38";
               item.style.cursor = "not-allowed";
               item.style.transform = "none";
               item.title = "신청 마감된 일정입니다";
-              if (radio.checked) radio.checked = false;
+              cb.checked = false;
             }
           });
         }

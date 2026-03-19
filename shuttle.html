@@ -113,11 +113,11 @@
         accent-color: #2563eb; flex-shrink: 0; margin-top: 3px; cursor: pointer;
       }
       .schedule-item:has(input[type="checkbox"]:checked) {
-        background: #eff6ff; border-color: #2563eb;
+        background: #eff6ff !important; border-color: #2563eb !important;
         box-shadow: 0 4px 12px rgba(37,99,235,0.15);
       }
       .schedule-item.weekend:has(input[type="checkbox"]:checked) {
-        background: #fff7ed; border-color: #f97316;
+        background: #fff7ed !important; border-color: #f97316 !important;
       }
 
       /* ── 마감 항목 스타일 ── */
@@ -604,7 +604,7 @@
           const todayDow = pht.getDay(); // 0=일, 1=월, 5=금, 6=토
 
           document.querySelectorAll(".schedule-item").forEach((item) => {
-            const radio = item.querySelector("input[type=radio]");
+            const radio = item.querySelector("input[type=checkbox]");
             if (!radio) return;
             const val = radio.value; // e.g. "3-20-hmart"
             const parts = val.split("-");
@@ -640,7 +640,7 @@
               item.title = scheduleDow === 1
                 ? "신청 마감 (금요일 16:50 PHT 기준)"
                 : "신청 마감 (전날 16:50 PHT 기준)";
-              if (radio.checked) radio.checked = false;
+              radio.checked = false;
             }
           });
         }
@@ -671,7 +671,7 @@
           });
         }
 
-        const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzC8a99RDL_Q93RKslS0O4tHLePJHDIf40flXH8qY3ngVPxF6dO5K8qLphyoXldm5ue/exec";
+        const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbwqK13BTYKhX4HqJHxJCotHP2X2lbtdRptQkW-j9A6-ZffkRtt1B8v1IKwIZ6uMBM4/exec";
         const form = document.getElementById("shuttle-form");
         const submitButton = document.getElementById("submit-button");
 
@@ -691,10 +691,8 @@
             submitButton.textContent = "전송 중...";
             try {
               const formData = new FormData(form);
-              // 체크박스 다중값 처리
               formData.delete("schedule");
-              const scheduleValues = Array.from(checked).map(cb => cb.value).join(", ");
-              formData.append("schedule", scheduleValues);
+              formData.append("schedule", Array.from(checked).map(cb => cb.value).join(", "));
               const res = await fetch(FORM_ENDPOINT, { method: "POST", body: formData });
               if (!res.ok) throw new Error("Network error");
               alert("신청이 완료되었습니다! 드림센터를 통해 확인 안내를 드릴 예정입니다.");
